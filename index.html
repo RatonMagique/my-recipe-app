@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="manifest" href="manifest.json">
+    <title>Liste de recettes</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h1, h2 {
+            color: #343a40;
+            text-align: center;
+        }
+
+        /* Formulaire et boutons */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            border-color: #80bdff;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Listes */
+        .recipe-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .recipe-list li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .recipe-list button {
+            background-color: #dc3545;
+        }
+
+        .recipe-list button:hover {
+            background-color: #c82333;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            input[type="text"],
+            select {
+                max-width: 100%;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        /* Centrage */
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Message de succès */
+        .success-message {
+            color: #28a745;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ajouter une recette</h1>
+    <form id="recipe-form">
+        <label for="recipe-name">Nom de la recette:</label>
+        <input type="text" id="recipe-name" required>
+        
+        <label for="recipe-tag">Étiquette:</label>
+        <select id="recipe-tag">
+            <option value="végétarienne">Végétarienne</option>
+            <option value="végane">Végane</option>
+            <option value="omnivore">Omnivore</option>
+        </select>
+        
+        <button type="submit">Ajouter</button>
+    </form>
+    
+    <h2>Tirer des recettes au sort</h2>
+    <div class="centered">
+        <label for="number-of-recipes">Nombre de recettes à tirer:</label>
+        <input type="number" id="number-of-recipes" min="1" value="1">
+        
+        <label for="filter-tag">Filtrer par étiquette:</label>
+        <select id="filter-tag">
+            <option value="all">Toutes</option>
+            <option value="végétarienne">Végétarienne</option>
+            <option value="végane">Végane</option>
+            <option value="omnivore">Omnivore</option>
+        </select>
+        
+        <button id="draw-recipes-btn">Tirer au sort</button>
+    </div>
+    
+    <ul id="random-recipes-list" class="recipe-list"></ul>
+
+    <h2>Voir toutes les recettes</h2>
+    <div class="centered">
+        <button id="show-all-recipes-btn">Afficher/Masquer la liste complète des recettes</button>
+    </div>
+    
+    <ul id="complete-recipe-list" class="recipe-list" style="display:none;"></ul>
+    
+    <div id="success-message" class="success-message"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
