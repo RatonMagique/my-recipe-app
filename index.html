@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json">
     <title>Liste de recettes</title>
     <style>
         /* Style général */
@@ -111,6 +111,44 @@
             color: #28a745;
             text-align: center;
         }
+
+        /* Boutons d'importation et d'exportation */
+        .button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .button:hover {
+            background-color: #218838;
+        }
+
+        /* Style pour le label du bouton d'import */
+        label[for="import-recipes-input"] {
+            cursor: pointer;
+            text-decoration: underline;
+            color: #28a745;
+            transition: color 0.2s;
+        }
+
+        label[for="import-recipes-input"]:hover {
+            color: #218838;
+        }
+
+        /* Conteneur pour les boutons d'import/export */
+        .data-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -155,6 +193,13 @@
     <ul id="complete-recipe-list" class="recipe-list" style="display:none;"></ul>
     
     <div id="success-message" class="success-message"></div>
+	
+	<h2>Importer ou Exporter des Données</h2>
+	<div class="data-buttons">
+        <button id="import-recipes-btn" class="button">Importer des recettes</button>
+        <input type="file" id="import-recipes-input" accept=".json" style="display: none;">
+        <button id="export-recipes-btn" class="button">Exporter les recettes</button>
+    </div>
 
     <script src="app.js"></script>
 </body>
