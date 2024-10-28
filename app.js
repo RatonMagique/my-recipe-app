@@ -84,7 +84,16 @@ showAllRecipesBtn.addEventListener('click', function() {
 function displayCompleteRecipeList() {
     completeRecipeList.innerHTML = ''; // Vider la liste existante
 
-    recipes.forEach((recipe, index) => {
+    // Trier les recettes par nom
+    const sortedRecipes = sortRecipes(recipes);
+
+    // Vérifier si des recettes existent
+    if (sortedRecipes.length === 0) {
+        completeRecipeList.innerHTML = '<li>Aucune recette à afficher.</li>';
+        return; // Sortir si aucune recette
+    }
+
+    sortedRecipes.forEach((recipe, index) => {
         const listItem = document.createElement('li');
         listItem.textContent = `${recipe.name} - ${recipe.tag}`;
 
@@ -98,6 +107,11 @@ function displayCompleteRecipeList() {
         listItem.appendChild(deleteButton);
         completeRecipeList.appendChild(listItem);
     });
+}
+
+// Fonction pour trier les recettes dans l'ordre alphabétique
+function sortRecipes(recipes) {
+    return recipes.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 // Tirer des recettes au sort

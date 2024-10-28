@@ -5,6 +5,9 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
+  "description": "Une application pour gérer et tirer au sort vos recettes.",
+  "scope": "./",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icons/icon-192x192.png",
